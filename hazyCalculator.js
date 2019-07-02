@@ -7,12 +7,13 @@ function isNumericValue(value) {
 }
 
 function isNothingValue(value) {
-  return value === null
+  return value === null || value === undefined
 }
 
 function isAcceptableValue(value) {
   const operators = ['+', '-', '*', '/']
-  return typeof value === 'Number' || operators.includes(value)
+  const type = typeof Number(value)
+  return type === 'number' || operators.includes(value)
 }
 
 function performCalculationStep(firstOperand, operator, secondOperand) {
@@ -26,7 +27,7 @@ function performCalculationStep(firstOperand, operator, secondOperand) {
     case '/':
       return firstOperand / secondOperand
     default:
-      throw new Error('Invalid input!')
+      throw new Error('Invalid operator input!')
   }
 }
 
@@ -36,7 +37,7 @@ module.exports.calculate = function (calculationSteps) {
 
   calculationSteps.forEach(nextCalculationStep => {
     if (!isAcceptableValue(nextCalculationStep)) {
-      throw new Error('Invalid input!')
+      throw new Error('Invalid input!]')
     }
 
     if (isNothingValue(total) && isNumericValue(nextCalculationStep)) {
