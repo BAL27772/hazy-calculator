@@ -7,27 +7,27 @@ describe('HazyCalculator', () => {
     expect(calculate(calculationSteps)).to.equal(8)
   })
 
-  xit('treats null values as zeroes and includes them in the calculation', () => {
+  it('treats null values as zeroes and includes them in the calculation', () => {
     const calculationSteps = [10, '+', null]
     expect(calculate(calculationSteps)).to.equal(10)
   })
 
-  xit('ignores undefined and empty string values and continues operation', () => {
+  it('ignores undefined and empty string values and continues operation', () => {
     const calculationSteps = [, , '', 23, '-', , 12]
     expect(calculate(calculationSteps)).to.equal(11)
   })
 
-  xit('can perform a complex operation with multiple steps', () => {
+  it('can perform a complex operation with multiple steps', () => {
     const calculationSteps = [6, '/', '3', '*', 5]
     expect(calculate(calculationSteps)).to.equal(10)
   })
 
-  xit('throws an error when the sequence has two operators in a row', () => {
+  it('throws an error when the sequence has two operators in a row', () => {
     const calculationSteps = [6, '/', '+', 3]
     expect(() => calculate(calculationSteps)).to.throw('Invalid input!')
   })
 
-  xit('throws an error when the sequence contains non-numeric and non-operator elements', () => {
+  it('throws an error when the sequence contains non-numeric and non-operator elements', () => {
     const calculationSteps = [9, 'NINE', 9]
     expect(() => calculate(calculationSteps)).to.throw('Invalid input!')
   })
