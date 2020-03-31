@@ -3,7 +3,7 @@ function isSkippedValue(value) {
 }
 
 function isNumericValue(value) {
-  return !isNaN(value)
+  return !isNaN(value) && value != '' 
 }
 
 function isNothingValue(value) {
@@ -27,7 +27,7 @@ function performCalculationStep(firstOperand, operator, secondOperand) {
     case '/':
       return firstOperand / secondOperand
     default:
-      throw new Error('Invalid operator input!')
+      throw new Error('Invalid input!')
   }
 }
 
